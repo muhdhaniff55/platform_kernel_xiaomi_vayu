@@ -1,13 +1,15 @@
 #!/bin/bash
 
+# Thanks to clhex for the script (Github username: clhexftw)
+
 kernel_dir="${PWD}"
 CCACHE=$(command -v ccache)
 objdir="${kernel_dir}/out"
 anykernel=$HOME/anykernel
 builddir="${kernel_dir}/build"
 ZIMAGE=$kernel_dir/out/arch/arm64/boot/Image
-kernel_name="Hiraya"
-zip_name="$kernel_name-$(date +"%d%m%Y-%H%M").zip"
+kernel_name="SkylineKernel_vayu"
+zip_name="$kernel_name$(date +"%d%m%Y-%H%M").zip"
 CLANG_DIR=$HOME/tc/clang-r498229b
 export CONFIG_FILE="vayu_user_defconfig"
 export ARCH="arm64"
@@ -60,7 +62,7 @@ completion()
     COMPILED_DTBO=arch/arm64/boot/dtbo.img
     if [[ -f ${COMPILED_IMAGE} && ${COMPILED_DTBO} ]]; then
 
-        git clone -q https://github.com/RecreationRealm/AnyKernel3.git -b master $anykernel
+        git clone -q https://github.com/GXC2356/AnyKernel3.git -b master $anykernel
 
         mv -f $ZIMAGE ${COMPILED_DTBO} $anykernel
 
