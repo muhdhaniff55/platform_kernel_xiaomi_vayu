@@ -8,7 +8,7 @@ objdir="${kernel_dir}/out"
 anykernel=$HOME/anykernel
 builddir="${kernel_dir}/build"
 ZIMAGE=$kernel_dir/out/arch/arm64/boot/Image
-kernel_name="SkylineKernel_vayu_"
+kernel_name="SkylineKernel_vayu_KernelSU"
 zip_name="$kernel_name$(date +"%Y%m%d").zip"
 CLANG_DIR=tc/clang
 export CONFIG_FILE="vayu_user_defconfig"
@@ -56,7 +56,6 @@ compile()
     LLVM=1 \
     LLVM_IAS=1
 }
-
 completion()
 {
     cd ${objdir}
@@ -64,7 +63,7 @@ completion()
     COMPILED_DTBO=arch/arm64/boot/dtbo.img
     if [[ -f ${COMPILED_IMAGE} && ${COMPILED_DTBO} ]]; then
 
-        git clone -q https://github.com/GXC2356/AnyKernel3.git -b master $anykernel
+        git clone -q https://github.com/GXC2356/AnyKernel3.git -b ksu $anykernel
 
         mv -f $ZIMAGE ${COMPILED_DTBO} $anykernel
 
