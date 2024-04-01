@@ -13,6 +13,8 @@ zip_name="$kernel_name$(date +"%Y%m%d").zip"
 CLANG_DIR=$HOME/tc/clang-r498229b
 export CONFIG_FILE="vayu_user_defconfig"
 export ARCH="arm64"
+export KBUILD_BUILD_HOST=gxc2356
+export KBUILD_BUILD_USER=home
 
 export PATH="$CLANG_DIR/bin:$PATH"
 
