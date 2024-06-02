@@ -10,7 +10,7 @@ builddir="${kernel_dir}/build"
 ZIMAGE=$kernel_dir/out/arch/arm64/boot/Image
 kernel_name="SkylineKernel_vayu_"
 zip_name="$kernel_name$(date +"%Y%m%d").zip"
-CLANG_DIR=$HOME/tc/clang-r498229b
+CLANG_DIR=tc/clang
 export CONFIG_FILE="vayu_user_defconfig"
 export ARCH="arm64"
 export KBUILD_BUILD_HOST=gxc2356
@@ -67,19 +67,18 @@ completion()
         git clone -q https://github.com/GXC2356/AnyKernel3.git -b master $anykernel
 
         mv -f $ZIMAGE ${COMPILED_DTBO} $anykernel
+        find out/arch/arm64/boot/dts/qcom -name '*.dtb' -exec cat {} + > $anykernel/dtb.img
 
         cd $anykernel
         find . -name "*.zip" -type f
-        find . -name "*.zip" -type f -delete
+        find . -name "*.zip" -type f
         zip -r AnyKernel.zip *
         mv AnyKernel.zip $zip_name
         mv $anykernel/$zip_name $HOME/$zip_name
         rm -rf $anykernel
         END=$(date +"%s")
         DIFF=$(($END - $START))
-        echo -e ${RED} "############################################"
-        echo -e ${RED} "##  BUILD COMPLETED!!! UPLOADING... ##"
-        echo -e ${RED} "############################################${NC}"
+        echo -e ${LGR} "#### build completed successfully (($END)) ####"
         exit 0
     fi
 }
