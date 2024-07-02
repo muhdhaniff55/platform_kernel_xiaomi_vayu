@@ -67,7 +67,6 @@ completion()
         git clone -q https://github.com/GXC2356/AnyKernel3.git -b master $anykernel
 
         mv -f $ZIMAGE ${COMPILED_DTBO} $anykernel
-        find out/arch/arm64/boot/dts/qcom -name '*.dtb' -exec cat {} + > $anykernel/dtb.img
 
         cd $anykernel
         find . -name "*.zip" -type f
@@ -76,10 +75,11 @@ completion()
         mv AnyKernel.zip $zip_name
         mv $anykernel/$zip_name $HOME/$zip_name
         rm -rf $anykernel
-        END=$(date +"%s")
-        DIFF=$(($END - $START))
-        echo -e ${LGR} "#### build completed successfully (($END)) ####"
+        echo -e ${LGR} "#### build completed successfully (hh:mm:ss) ####"
         exit 0
+    else
+        echo -e ${LGR} "#### failed to build some targets (hh:mm:ss) ####"
+
     fi
 }
 make_defconfig
