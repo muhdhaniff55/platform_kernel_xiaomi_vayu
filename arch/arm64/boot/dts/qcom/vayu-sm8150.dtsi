@@ -283,7 +283,6 @@ And public attribution of xiaomi platforms(like J20S and so and)
 	};
 	vayu_batterydata: qcom,battery-data {
 		qcom,batt-id-range-pct = <15>;
-                #include "batterydata-M703-ATL-6000mah.dtsi"
 		#include "fg-gen4-batterydata-vayu-NVT-5160mah.dtsi"
 		#include "fg-gen4-batterydata-vayu-sunwoda-5160mah.dtsi"
 	};
