@@ -83,6 +83,6 @@ completion()
     fi
 }
 make_defconfig
-compile
+compile | tee out/log.txt
 completion
 cd ${kernel_dir}
